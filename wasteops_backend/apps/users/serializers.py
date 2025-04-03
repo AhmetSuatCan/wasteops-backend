@@ -10,7 +10,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = ['name', 'email', 'password', 'gender', 'age', 'role', 'phone_number', 'address']
+        fields = ['username', 'email', 'password', 'gender', 'age', 'role', 'phone_number', 'address']
 
     def create(self, validated_data):
         # Hash the password before saving

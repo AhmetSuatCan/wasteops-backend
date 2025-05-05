@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-#-4b^-a@l2*_s=fiqkr9x4-ig8xw&%yg1bmek44j8&@(t7hgfo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "drf_yasg",
     "apps.users",
+    "apps.organizations",
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +78,11 @@ TEMPLATES = [
         },
     },
 ]
+
+SIMPLE_JWT = {
+            'BLACKLIST_AFTER_ROTATION': True,
+        }
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

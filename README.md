@@ -1,3 +1,24 @@
+# WasteOps Backend
+
+WasteOps is a waste management system designed to help municipalities and related organizations efficiently coordinate their waste collection operations. The system enables features such as team creation, task assignment, route planning, and shift scheduling — all tailored to different user roles like Admins and Employees. This repository contains the backend codebase built with Django and Django REST Framework.
+
+---
+
+## 🚀 Project Overview
+
+WasteOps allows organizations to:
+- Create and manage their own teams and staff.
+- Define and manage waste collection vehicles and facilities.
+- Design waste collection routes.
+- Assign shifts and tasks to teams based on routes.
+- Authenticate and authorize users with different roles (Admin, Manager, Team Chief, Personnel).
+
+---
+
+## 🏗️ Project Architecture
+
+The project follows a modular app-based structure using Django best practices:
+
 
 ---
 

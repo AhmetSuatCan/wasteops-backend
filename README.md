@@ -15,13 +15,6 @@ WasteOps allows organizations to:
 
 ---
 
-## 🏗️ Project Architecture
-
-The project follows a modular app-based structure using Django best practices:
-
-
----
-
 ## 🛠️ Technologies Used
 
 - **Python 3.10+**
@@ -32,6 +25,20 @@ The project follows a modular app-based structure using Django best practices:
 - **Leaflet.js Integration (TODO)** – For interactive route creation and mapping.
 
 ---
+## 🏗️ Project Architecture
+
+The project follows a modular app-based structure using Django best practices:\
+
+wasteops-backend/
+├── apps/
+│ ├── human_resources/ # Team creation and personnel management
+│ ├── organization/ # Organization-level data and inventory management
+│ ├── users/ # Authentication and user roles (Admin / Employee)
+│ ├── operations/ # (TODO) Task assignment, shift planning
+│ └── map_routes/ # (TODO) Route creation and map integrations
+├── config/ # Django settings, environment configs, main URLs
+├── manage.py # Project entry point
+├── requirements.txt # Python dependencies
 
 ## 📦 Apps Description
 

@@ -1,29 +1,29 @@
 from rest_framework import serializers
-from .models import Employment
-from .models import OrganizationJoinCode
-from time import timezone
+from apps.human_resources.models import Employment, OrganizationJoinCode
+from django.utils import timezone
+
+'''
+These two serializers is for generating a joining code to create an Employment.
+
+An employment is basically a connection between a User and Organization.
+'''
 
 
-class GenerateJoinCodeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrganizationJoinCode
-        fields = ['code', 'expires_at', 'created_at']
-
+class GenerateJoinCodeSerializer(serializers.Serializer):
     def create(self, validated_data):
         user = self.context['request'].user
-        organization = user.organization
+        organization = user.organizations.first()
 
         code = OrganizationJoinCode.generate_code()
         return OrganizationJoinCode.objects.create(
             code=code,
             organization=organization,
             created_by=user,
-            expires_at=validated_data.get('expires_at')
         )
 
 
 class UseJoinCodeSerializer(serializers.Serializer):
-    code = serializers.CharField(max_length=6)
+    code = serializers.CharField(max_length=6, write_only=True)
 
     def validate_code(self, code):
         try:
@@ -55,3 +55,24 @@ class UseJoinCodeSerializer(serializers.Serializer):
             start_date=timezone.now()
         )
         return employment
+
+
+class OrganizationJoinCodeListSerializer(serializers.ModelSerializer):
+    organization_name = serializers.CharField(source='organization.name', read_only=True)
+    created_by_username = serializers.CharField(source='created_by.username', read_only=True)
+    is_valid = serializers.SerializerMethodField()
+
+    class Meta:
+        model = OrganizationJoinCode
+        fields = [
+            'code',
+            'organization_name',
+            'created_by_username',
+            'created_at',
+            'expires_at',
+            'is_revoked',
+            'is_valid'
+        ]
+
+    def get_is_valid(self, obj):
+        return obj.is_valid()

@@ -44,6 +44,7 @@ urlpatterns = [
         # Users app
         path('users/', include('apps.users.urls')),
         path('organizations/', include('apps.organizations.urls')),
+        path('human-resources/', include('apps.human_resources.urls')),
         # path('human-resources/', include('apps.human_resources.urls')),
 
     ])),

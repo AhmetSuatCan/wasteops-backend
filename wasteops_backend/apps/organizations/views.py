@@ -29,7 +29,7 @@ class OrganizationViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    @action(detail=False, methods=["get"], url_path="my-organization")
+    @action(detail=False, methods=["get"], url_path="check-owned-organization")
     def my_organization(self, request):
         organization = request.user.organizations.first()
         if organization:

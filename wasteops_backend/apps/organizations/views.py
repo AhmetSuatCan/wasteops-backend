@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from apps.users.permissions import IsAdmin
 
 from .models import Organization, Facility, Car, WasteContainer
 from .serializers import (
@@ -24,7 +25,7 @@ class AutoOrganizationMixin:
 class OrganizationViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdmin]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -45,18 +46,18 @@ class OrganizationViewSet(viewsets.ModelViewSet):
 class FacilityViewSet(AutoOrganizationMixin, viewsets.ModelViewSet):
     queryset = Facility.objects.all()
     serializer_class = FacilitySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdmin]
 
 
 # -- Car ViewSet --
 class CarViewSet(AutoOrganizationMixin, viewsets.ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdmin]
 
 
 # -- Waste Container ViewSet --
 class WasteContainerViewSet(AutoOrganizationMixin, viewsets.ModelViewSet):
     queryset = WasteContainer.objects.all()
     serializer_class = WasteContainerSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdmin]

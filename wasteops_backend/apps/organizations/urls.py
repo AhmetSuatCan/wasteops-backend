@@ -13,7 +13,7 @@ app_name = 'apps.organizations'
 router = DefaultRouter()
 router.register(r'core', OrganizationViewSet, basename='organization')
 router.register(r'facilities', FacilityViewSet, basename='facility')
-router.register(r'cars', CarViewSet, basename='car')
+router.register(r'trucks', CarViewSet, basename='truck')
 router.register(r'waste-containers', WasteContainerViewSet, basename='wastecontainer')
 
 urlpatterns = [

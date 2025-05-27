@@ -53,3 +53,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'email', 'name', 'gender', 'age', 'role',
                   'phone_number', 'address', 'is_active', 'is_staff']
         read_only_fields = fields
+
+
+class UserMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id', 'email', 'name', 'gender', 'age',
+            'role', 'phone_number', 'address'
+        ]

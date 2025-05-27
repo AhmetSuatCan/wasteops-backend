@@ -45,6 +45,8 @@ urlpatterns = [
         path('users/', include('apps.users.urls')),
         path('organizations/', include('apps.organizations.urls')),
         path('human-resources/', include('apps.human_resources.urls')),
+        path('operations/', include('apps.operations.urls')),
+        path('maps/', include('apps.maps.urls')),
         # path('human-resources/', include('apps.human_resources.urls')),
 
     ])),

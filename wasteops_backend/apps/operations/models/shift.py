@@ -3,6 +3,9 @@ from django.utils import timezone
 
 
 class ShiftModel(models.Model):
+    # TODO: A status enum field => Pending | started | finished
+    # We may be able do derive status from end_time and start_time and from timezone.now but we need to define
+    # the difference between a Shift that must be started and a Shift has actually started
     name = models.CharField(max_length=255, default='unnamed')
     route = models.ForeignKey(
         "maps.Route",

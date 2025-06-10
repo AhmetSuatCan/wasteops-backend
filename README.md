@@ -22,8 +22,6 @@ WasteOps allows organizations to:
 - **Django REST Framework** – API development.
 - **PostgreSQL** – Relational database system used for structured data.
 - **JWT Authentication** – Token-based secure authentication using [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/).
-- **Leaflet.js Integration (TODO)** – For interactive route creation and mapping.
-
 
 ---
 
@@ -63,13 +61,13 @@ Connects personnel with organizations. Manages:
 - Employee assignments
 - Staff directory
 
-### `operations/` (Coming Soon)
+### `operations/`
 Will handle:
 - Task scheduling
 - Shift planning
 - Attaching teams to shifts and routes
 
-### `map_routes/` (Coming Soon)
+### `map_routes/`
 Will integrate with **Leaflet.js** to support:
 - Drawing custom routes
 - Assigning routes to teams and shifts
